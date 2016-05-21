@@ -1,11 +1,28 @@
 package corp.app.com.serviflash_cliente;
 
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
-public class Menuinicial extends AppCompatActivity {
+public class Menuinicial extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+
+    /**
+     * Instancia del drawer
+     */
+    private DrawerLayout drawerLayout;
+
+    /**
+     * Titulo inicial del drawer
+     */
+    private String drawerTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,13 +36,29 @@ public class Menuinicial extends AppCompatActivity {
     private void setToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        final ActionBar ab = getSupportActionBar();
-        if (ab != null) {
-            // Poner ícono del drawer toggle
-            ab.setHomeAsUpIndicator(R.drawable.ic_action_action_reorder_white);
-            ab.setDisplayHomeAsUpEnabled(true);
-        }
 
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        return false;
+    }
 }
