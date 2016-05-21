@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Serviflash_Cliente</string>
+    <string name="app_name">Serviflash</string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
