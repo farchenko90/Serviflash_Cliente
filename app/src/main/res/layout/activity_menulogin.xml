@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="corp.app.com.serviflash_cliente.menulogin"
+    android:background="#ECEFF1">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:id="@+id/image"
+        android:src="@drawable/icono"
+        android:layout_marginBottom="20dp"/>
+
+    <ScrollView
+        android:id="@+id/login_form"
+        android:layout_below="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/email_login_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/email"
+                    android:drawableLeft="@drawable/ic_action_action_account_box"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Usuario"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/edittext_rounded_corners"/>
+
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:drawableLeft="@drawable/ic_action_communication_vpn_key"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_password"
+                    android:imeActionId="@+id/login"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:background="@drawable/edittext_rounded_corners"/>
+
+
+
+            <Button
+                android:id="@+id/email_sign_in_button"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/action_sign_in"
+                android:textColor="@color/colortexto"
+                android:textStyle="bold"
+                android:onClick="iniciar"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:background="@drawable/edittext_rounded_corners"/>
+
+            <Button
+                android:id="@+id/facebook"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Iniciar sesión con facebook"
+                android:textColor="@color/colortexto"
+                android:textStyle="bold"
+                android:backgroundTint="@color/botonazul"
+                android:background="@drawable/edittext_rounded_corners"/>
+
+            <TextView
+                android:id="@+id/registrar"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/email_sign_in_button"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_action_hardware_keyboard_arrow_right"
+                android:layout_alignParentRight="true"
+                android:textSize="16sp"
+                android:layout_marginTop="10sp"
+                android:text="Registrarse"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:paddingTop="2sp"
+                android:paddingBottom="5sp"
+                android:layout_marginLeft="16sp"
+                android:layout_marginRight="16sp"
+                android:clickable="true"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

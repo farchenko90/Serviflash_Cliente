@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/inicio"
+            android:checked="true"
+            android:icon="@drawable/ic_action_action_home"
+            android:title="Inicio"/>
+        <item android:id="@+id/pedido"
+            android:icon="@drawable/ic_action_ic_motorcycle_black_48dp"
+            android:title="Realizar Envio"/>
+        <item android:id="@+id/perfil"
+            android:icon="@drawable/ic_action_action_account_box"
+            android:title="Perfil"/>
+        <item android:id="@+id/salir"
+            android:icon="@drawable/ic_action_action_exit_to_app"
+            android:title="Salir"/>
+    </group>
+</menu>
