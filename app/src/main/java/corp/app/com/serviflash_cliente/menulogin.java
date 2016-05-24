@@ -10,6 +10,7 @@ import android.widget.Toast;
 import org.json.JSONObject;
 
 import corp.app.com.serviflash_cliente.Modelos.Cliente;
+import corp.app.com.serviflash_cliente.Notificaciones.initNotificacion;
 import corp.app.com.serviflash_cliente.Services.WebServices;
 import corp.app.com.serviflash_cliente.Util.General;
 
@@ -23,15 +24,20 @@ public class menulogin extends AppCompatActivity {
         setContentView(R.layout.activity_menulogin);
         initComponent();
         gn = new General(this);
-
+        new initNotificacion(this).initPush();
         Cliente c = gn.cargarCliente();
         if(c.getEmail() != null){
+            new initNotificacion(this).initPush();
             Intent i = new Intent(menulogin.this,Menuinicial.class);
             startActivity(i);
             finish();
         }
 
     }
+
+    /*public void updatepush(){
+        final Cliente c = new Cliente();
+    }*/
 
     private void initComponent(){
         txtEmail = (EditText) findViewById(R.id.email);
@@ -42,11 +48,13 @@ public class menulogin extends AppCompatActivity {
         final Cliente c = new Cliente();
         c.setEmail(txtEmail.getText().toString());
         c.setPass(txtPass.getText().toString());
+        gn.initCargando("Iniciando sesión...");
         new Thread(new Runnable() {
             @Override
             public void run() {
                 WebServices cs = new WebServices();
                 final JSONObject j = cs.login(c);
+                gn.finishCargando();
                 System.out.println(j);
                 runOnUiThread(new Runnable() {
                     @Override
@@ -56,11 +64,15 @@ public class menulogin extends AppCompatActivity {
                                 Toast.makeText(menulogin.this, "Error en el servidor", Toast.LENGTH_SHORT).show();
                             } else{
                                if(j.getInt("message") == 3){
-                                   gn.initCargando("Iniciando sesión...");
+
                                    JSONObject temp = j.getJSONObject("admin");
                                    Toast.makeText(menulogin.this,"Bienvenido "+temp.getString("nombreape"),Toast.LENGTH_SHORT).show();
-                                   gn.guardarCliente(temp.getString("email"),temp.getString("nombreape"),
-                                           txtPass.getText().toString());
+                                   Cliente c = new Cliente();
+                                   c.setId(temp.getInt("id"));
+                                   c.setEmail(temp.getString("email"));
+                                   c.setNombreape(temp.getString("nombreape"));
+                                   c.setPass(txtPass.getText().toString());
+                                   gn.guardarCliente(c);
                                    Intent i = new Intent(menulogin.this,Menuinicial.class);
                                    startActivity(i);
                                    finish();

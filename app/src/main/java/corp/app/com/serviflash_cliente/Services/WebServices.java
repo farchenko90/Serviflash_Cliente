@@ -79,6 +79,56 @@ public class WebServices {
         return null;
     }
 
+    public JSONObject updatepush(String idpush,int id){
+        try {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+            URL url = new URL(Server.ruta+"push/"+id);
+            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+            connection.setRequestMethod("PUT");
+            connection.setRequestProperty("Content-Type", "application/json");
+            connection.connect();
+
+            JSONObject jsonParam = new JSONObject();
+            jsonParam.put("idpush", idpush);
+            System.out.println(jsonParam);
+
+            DataOutputStream printout = new DataOutputStream(connection.getOutputStream());
+            //printout.writeUTF(URLEncoder.encode(jsonParam.toString(), "UTF-8"));
+            byte[] buf = jsonParam.toString().getBytes("UTF-8");
+            printout.write(buf);
+            printout.flush ();
+            printout.close ();
+            BufferedReader rd;
+            String jsonText;
+            JSONObject json;
+            switch (connection.getResponseCode()){
+                case 404:
+                    rd = new BufferedReader(new InputStreamReader(connection.getInputStream(), Charset.forName("UTF-8")));
+                    jsonText = readAll(rd);
+                    json = new JSONObject(jsonText);
+
+                    connection.disconnect();
+                    return json;
+                case 200:
+                    rd = new BufferedReader(new InputStreamReader(connection.getInputStream(), Charset.forName("UTF-8")));
+                    jsonText = readAll(rd);
+                    json = new JSONObject(jsonText);
+
+                    connection.disconnect();
+                    return json;
+
+                default:
+                    mensaje = "Error interno en el servidor";
+                    return null;
+            }
+
+        }catch (Exception ex){
+            msgError = "Error: "+ex.getMessage();
+        }
+        return null;
+    }
+
     private String readAll(Reader rd) throws IOException {
         StringBuilder sb = new StringBuilder();
         int cp;

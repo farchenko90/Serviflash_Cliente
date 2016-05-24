@@ -5,19 +5,28 @@ package corp.app.com.serviflash_cliente.Modelos;
  */
 public class Cliente {
 
-    private String id;
+    private int id;
     private String cedula;
     private String nombreape;
     private String celular;
     private String email;
     private String pass;
+    private String idpush;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public String getIdpush() {
+        return idpush;
+    }
+
+    public void setIdpush(String idpush) {
+        this.idpush = idpush;
     }
 
     public String getCedula() {
