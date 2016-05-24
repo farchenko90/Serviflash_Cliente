@@ -23,11 +23,16 @@ public class General {
     private ProgressDialog dialogCargando;
 
     public General(Activity context){
-        this.context = context;
+        this.contexto = context;
     }
 
     public General(Context context,View v){
         this.contexto = context;
+        if(v != null){
+            Cliente cl = cargarCliente();
+            ((TextView)v.findViewById(R.id.username)).setText(cl.getNombreape());
+            ((TextView)v.findViewById(R.id.email)).setText(cl.getEmail());
+        }
     }
 
     public void mostrarDialog(String titulo,String mensaje,boolean cancelable){
@@ -47,7 +52,7 @@ public class General {
     }
 
     public void initCargando(String mensaje){
-        dialogCargando = new ProgressDialog(context);
+        dialogCargando = new ProgressDialog(contexto);
         dialogCargando.setMessage(mensaje);
         dialogCargando.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         dialogCargando.setCancelable(true);
@@ -59,7 +64,7 @@ public class General {
     }
 
     public void guardarCliente(Cliente c){
-        SharedPreferences prefs = context.getSharedPreferences("serviflash", Context.MODE_PRIVATE);
+        SharedPreferences prefs = contexto.getSharedPreferences("serviflash", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt("id", c.getId());
         editor.putString("email", c.getEmail());
@@ -69,12 +74,12 @@ public class General {
     }
 
     public int getIdCliente(){
-        SharedPreferences prefs = context.getSharedPreferences("serviflash", Context.MODE_PRIVATE);
+        SharedPreferences prefs = contexto.getSharedPreferences("serviflash", Context.MODE_PRIVATE);
         return prefs.getInt("id", 0);
     }
 
     public Cliente cargarCliente(){
-        SharedPreferences prefs = context.getSharedPreferences("serviflash", Context.MODE_PRIVATE);
+        SharedPreferences prefs = contexto.getSharedPreferences("serviflash", Context.MODE_PRIVATE);
         Cliente c = new Cliente();
         c.setId(prefs.getInt("id",0));
         c.setEmail(prefs.getString("email", null));

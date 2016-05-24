@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import corp.app.com.serviflash_cliente.Notificaciones.initNotificacion;
 import corp.app.com.serviflash_cliente.Util.General;
@@ -29,6 +30,7 @@ public class Menuinicial extends AppCompatActivity implements NavigationView.OnN
     private String drawerTitle;
     General gn;
     Toolbar toolbar;
+    TextView username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -35,10 +35,6 @@ public class menulogin extends AppCompatActivity {
 
     }
 
-    /*public void updatepush(){
-        final Cliente c = new Cliente();
-    }*/
-
     private void initComponent(){
         txtEmail = (EditText) findViewById(R.id.email);
         txtPass = (EditText) findViewById(R.id.password);
