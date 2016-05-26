@@ -63,13 +63,15 @@ public class General {
         dialogCargando.dismiss();
     }
 
-    public void guardarCliente(Cliente c){
+    public void guardarCliente(Cliente c,boolean face){
         SharedPreferences prefs = contexto.getSharedPreferences("serviflash", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt("id", c.getId());
         editor.putString("email", c.getEmail());
         editor.putString("nombreape", c.getNombreape());
         editor.putString("pass", c.getPass());
+        editor.putString("idface",c.getIdface());
+        editor.putBoolean("face",face);
         editor.commit();
     }
 

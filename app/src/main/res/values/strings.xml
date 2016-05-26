@@ -19,5 +19,7 @@
     <string name="pedido">Realizar Envio</string>
     <string name="perfil">Perfil</string>
     <string name="Salir">Salir</string>
+    <string name="facebook_app_id">608594819305177</string>
+    <string name="facebook_id">608594819305177</string>
 
 </resources>

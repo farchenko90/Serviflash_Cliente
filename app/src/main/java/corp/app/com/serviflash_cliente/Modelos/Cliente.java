@@ -12,6 +12,15 @@ public class Cliente {
     private String email;
     private String pass;
     private String idpush;
+    private String idface;
+
+    public String getIdface() {
+        return idface;
+    }
+
+    public void setIdface(String idface) {
+        this.idface = idface;
+    }
 
     public int getId() {
         return id;
