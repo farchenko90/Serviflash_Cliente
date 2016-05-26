@@ -21,5 +21,6 @@
     <string name="Salir">Salir</string>
     <string name="facebook_app_id">608594819305177</string>
     <string name="facebook_id">608594819305177</string>
+    <string name="title_activity_mapaenvio">Map</string>
 
 </resources>

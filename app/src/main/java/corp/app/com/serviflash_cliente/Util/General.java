@@ -95,7 +95,9 @@ public class General {
         if(id == R.id.nav_inicio ){
 
         }if(id == R.id.nav_pedido){
-
+            /*Intent i = new Intent(contexto, Mapaenvio.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            context.startActivity(i);*/
         }if(id == R.id.configuration_section){
             if(id == R.id.nav_perfil){
 
